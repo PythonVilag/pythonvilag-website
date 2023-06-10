@@ -7,22 +7,25 @@ on:
 jobs:
   run-tests:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.11"]
+
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Python
+      - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install -r requirements-dev.txt
-      - name: Run tests
+          pip install tox tox-gh
+      - name: Run tests with tox
+        run: tox
         env:
           PV_SECRET_KEY: ${{ secrets.PV_SECRET_KEY }}
           FLASK_DEBUG: ${{ secrets.FLASK_DEBUG }}
-        run: pytest
 
   deploy:
     runs-on: ubuntu-latest
@@ -43,5 +46,4 @@ jobs:
           git clone https://github.com/PythonVilag/pythonvilag-website.git
           cp -r pythonvilag-website/* ~/PythonVilag/
           cd ~/PythonVilag/
-          pip freeze | xargs pip uninstall -y
           pip install -r requirements.txt
