@@ -1,0 +1,33 @@
+{% extends "source/base.html" %}
+{% block content %}
+
+{% include "post/" + category + "/" + category + ".html" %}
+
+{% for subcategory in subcategories %}
+<div class="post_container">
+  <a href="{{ url_for('open_subcategory', category=subcategory.category, subcategory=subcategory.subcategory) }}">
+    <img class="post_image"
+      src="{{ url_for('static', filename= 'images/post/' + category + '/' + subcategory.image) }}">
+  </a>
+
+  <div class="post_text_container">
+    <div class="post_col_left">
+      <h3><b>{{ subcategory.order }}. {{ subcategory.title }}</b></h3>
+    </div>
+  </div>
+
+  <div class="post_text_container">
+    <p>
+      {{ subcategory.description }}
+    </p>
+    <div class="post_row">
+      <div class="post_col_left">
+        <p><a class="read_more_button"
+            href="{{ url_for('open_subcategory', category=subcategory.category, subcategory=subcategory.subcategory) }}">TOVÁBB
+            »</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endblock content %}

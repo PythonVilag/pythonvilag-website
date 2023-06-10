@@ -1,0 +1,72 @@
+.accordion {
+    background-color: #eee;
+    color: #000000;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 20px;
+    transition: 0.4s;
+}
+
+.active,
+.accordion:hover {
+    background-color: #C8C8C8;
+}
+
+.panel {
+    margin: 5px 0;
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    font-size: 18px;
+    text-align: justify;
+}
+
+.panel>ul {
+    padding-left: 20px;
+}
+
+.description>ul {
+    padding-left: 40px;
+}
+
+.panel>ul>li,
+.description>ul>li {
+    display: list-item;
+    list-style: disc;
+}
+
+
+.accordion:after {
+    /* Unicode character for "plus" sign (+) */
+    content: '\02795';
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    /* Unicode character for "minus" sign (-) */
+    content: "\2796";
+}
+
+.accordion_video {
+    text-align: center;
+    width: 1012px;
+    margin: 0 34px;
+    border: 1px solid black;
+}
+
+.accordion_video:after {
+    content: none;
+}
+
+.panel_video {
+    margin: 0;
+}

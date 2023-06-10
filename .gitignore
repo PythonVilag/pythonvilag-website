@@ -1,0 +1,34 @@
+# System
+.DS_Store
+
+# Distribution / Packaging
+build/
+dist/
+eggs/
+.eggs/
+sdist/
+wheels/
+*.egg-info/
+*.egg
+
+# Unit test / Coverage reports
+.tox/
+.coverage
+
+# Environments
+.env
+.venv
+env/
+venv/
+
+# Python
+__pycache__/
+.ipynb_checkpoints
+*.egg-info/
+*.log
+*.py[cod]
+*$py.class
+
+# IDE
+.idea/
+.vscode/

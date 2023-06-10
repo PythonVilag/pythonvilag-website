@@ -1,0 +1,34 @@
+{% extends "source/base.html" %}
+{% block content %}
+<div class="title">
+  <h1><span style="color: #306998; font-weight: bold">4. Lista és dictionary</span></h1>
+</div>
+<div class="description">
+  <p>
+    A következő lépés, hogy megtanuljuk milyen formában tudunk több összetartozó adatot együtt tárolni.
+    Megismerjük ezek között a fontos különbségeket,
+    és hogy melyiket milyen körülmények között érdemes használni.
+  </p>
+
+</div>
+
+<br>
+<button class="accordion accordion_video">Lista és dictionary videó</button>
+
+<div class="panel panel_video">
+  <div class="video">
+    <iframe width="1012" height="570" src="https://www.youtube.com/embed/XiBdVFq0miA" frameborder="0"
+      allowfullscreen></iframe>
+  </div>
+</div>
+
+<div class="description">
+  <div class="dashed"></div>
+  Ha úgy érzed sikerült megérteni a lecke lényegét töltsd ki a tesztet!<br>
+  Az tesznek nincs semmi súlya, csak a Te fejlődésedet segíti.
+  <a class="assessment_button" href="{{ url_for('open_assessment', category=category,
+        subcategory=subcategory, url=lesson.url) }}">Lista és dictionary teszt</a>
+</div>
+
+
+{% endblock content %}

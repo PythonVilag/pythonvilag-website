@@ -1,0 +1,96 @@
+# Build System
+[build-system]
+requires = ["setuptools"]
+
+# Project Metadata
+[project]
+name = "pythonvilag_website"
+version = "0.0.1"
+description = "Pythonvilag website."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+authors = [{ name = "Daniel Mizsak", email = "info@pythonvilag.hu" }]
+keywords = ["website", "tutorial", "flask", "python_vilag"]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
+]
+dependencies = [
+    "email-validator == 1.3.1",
+    "Flask-Caching==2.0.2",
+    "Flask-SQLAlchemy==2.5.1",
+    "Flask-WTF==1.1.1",
+    "Flask==2.3.2",
+    "itsdangerous==2.1.2",
+    "python-dotenv==1.0.0",
+    "SQLAlchemy==1.4",
+    "private-lecture-automation",
+]
+
+[project.optional-dependencies]
+dev = ["black", "coverage", "mypy", "pre-commit", "pytest", "tox"]
+
+[project.urls]
+Repository = "https://github.com/PythonVilag/pythonvilag-website"
+Homepage = "https://pythonvilag.hu"
+
+# Tools
+# Setup Tools
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# Black
+[tool.black]
+line-length = 100
+
+# Coverage
+[tool.coverage]
+html.show_contexts = true
+html.skip_covered = false
+path.source = "src"
+
+# MyPy
+[tool.mypy]
+mypy_path = ["src", "tests"]
+check_untyped_defs = true
+disallow_any_generics = true
+disallow_incomplete_defs = true
+ignore_missing_imports = true
+no_implicit_optional = true
+show_error_codes = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unreachable = true
+warn_unused_configs = true
+warn_unused_ignores = true
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_defs = false
+
+# Pytest
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning"]
+
+# Tox
+# TODO: Add coverage and black
+[tool.tox]
+legacy_tox_ini = """
+    [tox]
+    envlist = py311,mypy
+
+    [testenv]
+    setenv =
+        PYTHONPATH = {toxinidir}/src
+    deps =
+        -rrequirements.txt
+        -rrequirements-dev.txt
+    commands = pytest {posargs:tests}
+
+    [testenv:mypy]
+    basepython = python3.11
+    deps = mypy
+    commands = mypy src tests
+"""

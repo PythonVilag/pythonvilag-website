@@ -1,0 +1,51 @@
+<header>
+  <a href="{{ url_for('open_home') }}"><img src="{{ url_for('static', filename='images/source/banner_text.png') }}"></a>
+  <a href="{{ url_for('open_home') }}"><img
+      src="{{ url_for('static', filename='images/source/banner_home.png') }}"></a><a
+    href="{{ url_for('open_category', category='python') }}"><img
+      src="{{ url_for('static', filename='images/source/banner_python.png') }}"></a><a
+    href="{{ url_for('open_category', category='extra') }}"><img
+      src="{{ url_for('static', filename='images/source/banner_extra.png') }}"></a><a
+    href="{{ url_for('open_category', category='project') }}"><img
+      src="{{ url_for('static', filename='images/source/banner_project.png') }}"></a>
+  <nav>
+    <ul>
+      <li class="home_nav"><a href="{{ url_for('open_home') }}">Kezdőlap</a></li>
+      <li class="python_nav"><a href="{{ url_for('open_category', category='python') }}">Python kurzusok &dtrif;</a>
+        <ul class="dropdown">
+          <li><a href="{{ url_for('open_subcategory', category='python', subcategory='python_alapjai') }}">Python
+              alapjai
+              (f.a.)</a></li>
+          <!--
+          <li><a href="#">Python haladóknak (f.a.)</a></li>
+          <li><a href="#">Adatelemzés (f.a.)</a></li>
+          <li><a href="#">Gépi tanulás (f.a.)</a></li>
+          <li><a href="#">Webfejlesztés (f.a.)</a></li>
+          -->
+        </ul>
+      </li>
+      <li class="extra_nav"><a href="{{ url_for('open_category', category='extra') }}">Kiegészítő anyagok &dtrif;</a>
+        <ul class="dropdown">
+          <li><a href="#">Érettségi
+              feladatok (f.a.)</a></li>
+          <!--
+          <li><a href="#">Git (f.a.)</a></li>
+          <li><a href="#">Linux (f.a.)</a></li>
+          <li><a href="#">Docker (f.a.)</a></li>
+          -->
+        </ul>
+      </li>
+      <li class="project_nav"><a href="{{ url_for('open_category', category='project') }}">Projektjeim &dtrif;</a>
+        <ul class="dropdown">
+          <li><a href="#">Python Világ
+              weboldal (f.a.)</a></li>
+          <!--
+          <li><a href="#">Albérlet árelemzés (f.a.)</a></li>
+          <li><a href="#">Raspberry Pi (f.a.)</a></li>
+          <li><a href="#">Arduino (f.a.)</a></li>
+          -->
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</header>

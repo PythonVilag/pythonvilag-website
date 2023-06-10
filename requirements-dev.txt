@@ -1,0 +1,8 @@
+black
+coverage
+mypy
+pre-commit
+pytest
+tox
+twine
+wheel

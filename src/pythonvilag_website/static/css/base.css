@@ -1,0 +1,114 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, serif;
+    list-style: none;
+}
+
+body,
+html {
+    width: 100%;
+    background-image: url("../images/source/pattern.png");
+    background-repeat: repeat;
+    background-color: #000000;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 400;
+    margin: 10px 0;
+}
+
+.body_div {
+    position: relative;
+    width: 100%;
+    min-width: 200px;
+}
+
+.container {
+    width: 1084px;
+    min-height: calc(100vh - 90px);
+    margin: 0 auto 0 auto;
+    background-color: #FFFFFF;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+}
+
+.main {
+    width: 100%;
+    padding: 0 0 34px 0;
+}
+
+.title {
+    margin: 34px 34px 50px 34px;
+}
+
+.description {
+    margin: 20px 34px;
+    font-size: 20px;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+.error {
+    margin-top: 34px;
+    margin-bottom: 68px;
+    padding-top: 100px;
+    text-align: center;
+}
+
+.video {
+    width: 1012px;
+    margin: auto;
+}
+
+
+
+/* Style for the flash message container */
+.flash-container {
+    position: fixed;
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    text-align: center;
+    line-height: 75px !important;
+    width: 1084px;
+    opacity: 0.95;
+}
+
+/* Style for success message */
+.flash-success {
+    background-color: #28a745;
+    color: #fff;
+}
+
+/* Style for error message */
+.flash-error {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+
+/* Form */
+.input_field {
+    width: 40%;
+    font-size: 20px;
+    padding: 12px 24px !important;
+    color: #000000 !important;
+    background-color: #ffffff !important;
+    border: 1px solid #ccc !important
+}
+
+/* Mobile Version
+
+@media only screen and (max-width: 1080px) {
+
+}
+*/
