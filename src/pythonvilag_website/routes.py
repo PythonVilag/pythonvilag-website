@@ -12,9 +12,11 @@ import os
 
 from flask import abort, flash, render_template, request, send_file  # noqa: F401
 from flask.wrappers import Response
+from private_lecture_automation import send_introduction_email
 from werkzeug.exceptions import HTTPException
 
 from pythonvilag_website import app, cache
+from pythonvilag_website.forms import PrivateLectureInfoForm
 from pythonvilag_website.models import Assessment, Category, Lesson, Mentors
 
 
@@ -135,6 +137,20 @@ def open_assessment(category: str, subcategory: str, url: str) -> str:
 
 
 # Projects
+@app.route("/private-lecture", methods=["GET", "POST"])
+def private_lecture() -> str:
+    """Sends out an email including the information about my private lectures."""
+    form = PrivateLectureInfoForm()
+    if request.method == "POST" and form.validate_on_submit():
+        try:
+            send_introduction_email(
+                recipient_email=form.email.data,
+                values_to_replace={"NAME": form.name.data},
+            )
+            flash("Az üzenetet sikeresen elküldtük!", "flash-success")
+        except Exception:  # TODO: Specify exception
+            flash("Az üzenetet nem sikerült elküldeni!", "flash-error")
+    return render_template("site/private_lecture.html", title="Különóra", form=form)
 
 
 # Error handler
