@@ -31,6 +31,7 @@ dependencies = [
     "SQLAlchemy==1.4",
     # Self maintained
     "private-lecture-automation==0.2.0",
+    "checkmark==0.1.0",
 ]
 [project.optional-dependencies]
 dev = [

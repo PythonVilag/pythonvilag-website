@@ -159,6 +159,11 @@ def private_lecture() -> str:
     return render_template("site/private_lecture.html", title="Különóra", form=form)
 
 
+# checkmark
+csrf.exempt(checkmark_page)
+app.register_blueprint(checkmark_page, url_prefix="/checkmark")
+
+
 # Error handler
 # mypy: no-warn-unused-ignores
 # Ignore the type because mypy does not recognize the error handler decorator.
