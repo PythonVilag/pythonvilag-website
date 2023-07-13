@@ -1,7 +1,7 @@
 """
 Script for hosting the web application.
 
-@author "Dániel Lajos Mizsák" <info@pythonvilag.hu>
+@author "Daniel Mizsak" <info@pythonvilag.hu>
 """
 
 from pythonvilag_website import app

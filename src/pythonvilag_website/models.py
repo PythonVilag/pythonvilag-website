@@ -2,7 +2,7 @@
 Database structures.
 Type ignores are needed because of: https://github.com/python/mypy/issues/8603
 
-@author "Dániel Lajos Mizsák" <info@pythonvilag.hu>
+@author "Daniel Mizsak" <info@pythonvilag.hu>
 """
 from __future__ import annotations
 

@@ -1,9 +1,0 @@
-black
-mypy
-pre-commit
-pytest
-pytest-cov
-tox
-tox-gh-actions
-twine
-wheel

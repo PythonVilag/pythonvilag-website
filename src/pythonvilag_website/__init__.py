@@ -1,7 +1,7 @@
 """
 Initial setup of the app.
 
-@author "Dániel Lajos Mizsák" <info@pythonvilag.hu>
+@author "Daniel Mizsak" <info@pythonvilag.hu>
 """
 
 import os
@@ -37,4 +37,4 @@ cache = Cache(app)
 csrf = CSRFProtect(app)
 db = SQLAlchemy(app)
 
-from pythonvilag_website import routes  # pylint: disable=C0413,W0012
+from pythonvilag_website import routes  # noqa: E402, F401
