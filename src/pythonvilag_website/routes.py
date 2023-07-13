@@ -1,7 +1,7 @@
 """
 Available website URLs.
 
-@author "Dániel Lajos Mizsák" <info@pythonvilag.hu>
+@author "Daniel Mizsak" <info@pythonvilag.hu>
 """
 # mypy: no-warn-return-any
 # Ignore warn-return-any because abort() returns Any
