@@ -29,24 +29,3 @@ jobs:
         env:
           PV_SECRET_KEY: ${{ secrets.PV_SECRET_KEY }}
           FLASK_DEBUG: ${{ secrets.FLASK_DEBUG }}
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: run-tests
-    steps:
-    - name: Remote SSH
-      uses: appleboy/ssh-action@v0.1.10
-      with:
-        host: ${{ secrets.SSH_HOST }}
-        username: ${{ secrets.SSH_USERNAME }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: ${{ secrets.SSH_PORT }}
-        script: |
-          source ~/virtualenv/PythonVilag/3.8/bin/activate
-          python -m pip install --upgrade pip
-          cd ~/GitHub
-          rm -rf pythonvilag-website
-          git clone https://github.com/PythonVilag/pythonvilag-website.git
-          cp -r pythonvilag-website/* ~/PythonVilag/
-          cd ~/PythonVilag/
-          pip install -r requirements.txt
