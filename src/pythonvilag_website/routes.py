@@ -1,7 +1,7 @@
 """
 Available website URLs.
 
-@author "Dániel Lajos Mizsák" <info@pythonvilag.hu>
+@author "Daniel Mizsak" <info@pythonvilag.hu>
 """
 # mypy: no-warn-return-any
 # Ignore warn-return-any because abort() returns Any
@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import os
 
-from flask import abort, flash, render_template, request, send_file
+from flask import abort, flash, render_template, request, send_file  # noqa: F401
 from flask.wrappers import Response
 from werkzeug.exceptions import HTTPException
 
