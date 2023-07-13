@@ -11,7 +11,7 @@ from __future__ import annotations
 import os
 
 from checkmark.server.routes import checkmark_page
-from flask import abort, flash, render_template, request, send_file
+from flask import abort, flash, render_template, request, send_file  # noqa: F401
 from flask.wrappers import Response
 from werkzeug.exceptions import HTTPException
 
