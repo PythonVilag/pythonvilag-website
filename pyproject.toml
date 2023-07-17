@@ -29,6 +29,8 @@ dependencies = [
     "itsdangerous==2.1.2",
     "python-dotenv==1.0.0",
     "SQLAlchemy==1.4",
+    # Self maintained
+    "private-lecture-automation==0.2.0",
 ]
 [project.optional-dependencies]
 dev = [

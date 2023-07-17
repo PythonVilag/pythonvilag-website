@@ -145,7 +145,8 @@ def private_lecture() -> str:
         try:
             send_introduction_email(
                 recipient_email=form.email.data,
-                values_to_replace={"NAME": form.name.data},
+                included_images=["logo.png"],
+                values_to_replace={"NAME": form.name.data, "PRICE": "10000 HUF"},
             )
             flash("Az üzenetet sikeresen elküldtük!", "flash-success")
         except Exception:  # TODO: Specify exception
