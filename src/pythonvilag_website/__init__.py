@@ -16,8 +16,8 @@ config = dotenv_values(".env")
 if not config:
     config = dict(os.environ)
 try:
-    SECRET_KEY = config["PV_SECRET_KEY"]
-    FLASK_DEBUG = True if config["FLASK_DEBUG"] == "True" else False
+    SECRET_KEY = str(config["PV_SECRET_KEY"])
+    FLASK_DEBUG = True if str(config["FLASK_DEBUG"]) == "True" else False
 except KeyError as e:
     raise KeyError(
         "Config variables are missing. Check .env file or add environment variables."
