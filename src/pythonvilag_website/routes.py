@@ -10,12 +10,13 @@ from __future__ import annotations
 
 import os
 
+from checkmark.server.routes import checkmark_page
 from flask import abort, flash, render_template, request, send_file  # noqa: F401
 from flask.wrappers import Response
 from private_lecture_automation import send_introduction_email
 from werkzeug.exceptions import HTTPException
 
-from pythonvilag_website import app, cache
+from pythonvilag_website import app, cache, csrf
 from pythonvilag_website.forms import PrivateLectureInfoForm
 from pythonvilag_website.models import Assessment, Category, Lesson, Mentors
 
@@ -124,8 +125,6 @@ def open_assessment(category: str, subcategory: str, url: str) -> str:
             for question in questions:
                 answers[question.question] = request.form.get(question.question)
 
-        print(answers)
-
         return render_template(
             "source/assessment.html",
             title=title,
@@ -137,6 +136,12 @@ def open_assessment(category: str, subcategory: str, url: str) -> str:
 
 
 # Projects
+# checkmark
+csrf.exempt(checkmark_page)
+app.register_blueprint(checkmark_page, url_prefix="/checkmark")
+
+
+# private-lecture-automation
 @app.route("/private-lecture", methods=["GET", "POST"])
 def private_lecture() -> str:
     """Sends out an email including the information about my private lectures."""

@@ -1,0 +1,39 @@
+{% extends "source/base.html" %}
+{% block content %}
+<div class="title">
+  <h1>Különóra</h1>
+</div>
+
+<div class="description">
+  <p>Amennyiben az ingyenes tananyag mellett különórákat szeretnél venni,
+    akkor az e-mail címed megadása után automatikusan kapsz egy összefoglaló
+    levelet az órával kapcsolatos információkról.</p>
+
+  <br />
+
+  <form method="POST" action="" autocomplete="off">
+    {{ form.hidden_tag() }}
+
+    {{ form.name.label }}
+    <br />
+    {{ form.name(class="input_field") }}
+
+    <br /><br />
+
+    {{ form.email.label }}
+    <br />
+    {{ form.email(class="input_field") }}
+    {% if form.email.errors %}
+    <br />
+    <span style="color:red">Tuti jó az e-mail cím formátuma?</span>
+    {% endif %}
+
+    <br /><br />
+
+    {{ form.submit(class="read_more_button") }}
+
+  </form>
+
+
+</div>
+{% endblock content %}
