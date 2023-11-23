@@ -10,12 +10,12 @@ from __future__ import annotations
 
 import os
 
-from checkmark.server.routes import checkmark_page
 from flask import abort, flash, render_template, request, send_file  # noqa: F401
 from flask.wrappers import Response
 from private_lecture_automation import send_introduction_email
 from werkzeug.exceptions import HTTPException
 
+from checkmark.server.routes import checkmark_page
 from pythonvilag_website import app, cache, csrf
 from pythonvilag_website.forms import PrivateLectureInfoForm
 from pythonvilag_website.models import Assessment, Category, Lesson, Mentors
@@ -140,7 +140,6 @@ def open_assessment(category: str, subcategory: str, url: str) -> str:
 csrf.exempt(checkmark_page)
 app.register_blueprint(checkmark_page, url_prefix="/checkmark")
 
-
 # private-lecture-automation
 @app.route("/private-lecture", methods=["GET", "POST"])
 def private_lecture() -> str:
@@ -154,13 +153,9 @@ def private_lecture() -> str:
                 values_to_replace={"NAME": form.name.data, "PRICE": "10000 HUF"},
             )
             flash("Az üzenetet sikeresen elküldtük!", "flash-success")
-        except Exception as exception:
+        except Exception:  # TODO: Specify exception
             flash("Az üzenetet nem sikerült elküldeni!", "flash-error")
-            if app.config["DEBUG"]:
-                raise exception
-    return render_template(
-        "post/project/private_lecture_automation/private_lecture.html", title="Különóra", form=form
-    )
+    return render_template("site/private_lecture.html", title="Különóra", form=form)
 
 
 # Error handler
