@@ -154,14 +154,13 @@ def private_lecture() -> str:
                 values_to_replace={"NAME": form.name.data, "PRICE": "10000 HUF"},
             )
             flash("Az üzenetet sikeresen elküldtük!", "flash-success")
-        except Exception:  # TODO: Specify exception
+        except Exception as exception:
             flash("Az üzenetet nem sikerült elküldeni!", "flash-error")
-    return render_template("site/private_lecture.html", title="Különóra", form=form)
-
-
-# checkmark
-csrf.exempt(checkmark_page)
-app.register_blueprint(checkmark_page, url_prefix="/checkmark")
+            if app.config["DEBUG"]:
+                raise exception
+    return render_template(
+        "post/project/private_lecture_automation/private_lecture.html", title="Különóra", form=form
+    )
 
 
 # Error handler
