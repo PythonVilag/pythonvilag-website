@@ -17,12 +17,12 @@ python_routes = {
         "02_Valtozok_tipusok_es_muveleteik",
         "03_Komment_kiiras_bekeres",
         "04_Lista_es_dictionary",
-    ]
+    ],
 }
 for subcategory in python_routes:
     post_routes.append(f"/pv/python/{subcategory}/")
     for lesson in python_routes[subcategory]:
-        post_routes.append(f"/pv/python/{subcategory}/{lesson}/")
+        post_routes.append(f"/pv/python/{subcategory}/{lesson}/")  # noqa: PERF401
 
 
 @pytest.mark.parametrize("route", post_routes)
@@ -33,7 +33,7 @@ def test_posts(client, route):
 
 # Error handlers
 @pytest.mark.parametrize(
-    "route,error",
+    ("route", "error"),
     [("/non-existing-route", 404)],
 )
 def test_error_handler(client, route, error):

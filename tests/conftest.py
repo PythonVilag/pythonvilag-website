@@ -1,10 +1,6 @@
 import pytest
 
-from pythonvilag_website import app, db  # noqa: F401
-from pythonvilag_website.models import Assessment  # noqa: F401
-from pythonvilag_website.models import Category  # noqa: F401
-from pythonvilag_website.models import Lesson  # noqa: F401
-from pythonvilag_website.models import Mentors  # noqa: F401
+from pythonvilag_website import app
 
 
 @pytest.fixture(scope="session")

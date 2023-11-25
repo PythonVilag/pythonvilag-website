@@ -3,22 +3,21 @@ Available website URLs.
 
 @author "Daniel Mizsak" <info@pythonvilag.hu>
 """
-# mypy: no-warn-return-any
-# Ignore warn-return-any because abort() returns Any
 
 from __future__ import annotations
 
-import os
+from pathlib import Path
+from typing import TYPE_CHECKING
 
-from checkmark.server.routes import checkmark_page
-from flask import abort, flash, render_template, request, send_file  # noqa: F401
-from flask.wrappers import Response
-from private_lecture_automation import send_introduction_email
+from flask import abort, flash, render_template, request, send_file
 from werkzeug.exceptions import HTTPException
 
 from pythonvilag_website import app, cache, csrf
 from pythonvilag_website.forms import PrivateLectureInfoForm
 from pythonvilag_website.models import Assessment, Category, Lesson, Mentors
+
+if TYPE_CHECKING:
+    from flask.wrappers import Response
 
 
 # Basic
@@ -32,7 +31,7 @@ def open_home() -> str:
 @app.route("/daniel-mizsak")
 def open_cv() -> Response:
     """My not most up-to-date CV, without contact information."""
-    cv_document = os.path.join(os.path.dirname(__file__), "static/documents/daniel-mizsak-cv.pdf")
+    cv_document = (Path(__file__).parent / "static/documents/daniel-mizsak-cv.pdf").resolve()
     return send_file(cv_document, download_name="daniel-mizsak-cv.pdf")
 
 
@@ -70,13 +69,11 @@ def open_category(category: str) -> str:
 def open_subcategory(category: str, subcategory: str) -> str:
     """Page of the queried subcategory. Lists the available lessons within the subcategory."""
     all_posts = Category.query.all()
-    all_categories = set([post.category for post in all_posts])
-    all_subcategories = set([post.subcategory for post in all_posts])
+    all_categories = {post.category for post in all_posts}
+    all_subcategories = {post.subcategory for post in all_posts}
 
     if (category in all_categories) and (subcategory in all_subcategories):
-        category_id = (
-            Category.query.filter_by(category=category, subcategory=subcategory).first().id
-        )
+        category_id = Category.query.filter_by(category=category, subcategory=subcategory).first().id
         lessons = Lesson.query.filter_by(category_id=category_id).all()
         title = Category.query.filter_by(id=category_id).first().title
         return render_template(
@@ -137,32 +134,36 @@ def open_assessment(category: str, subcategory: str, url: str) -> str:
 
 # Projects
 # checkmark
-csrf.exempt(checkmark_page)
-app.register_blueprint(checkmark_page, url_prefix="/checkmark")
+if app.config["CHECKMARK"]:
+    from checkmark.server.routes import checkmark_page
 
+    csrf.exempt(checkmark_page)
+    app.register_blueprint(checkmark_page, url_prefix="/checkmark")
 
 # private-lecture-automation
-@app.route("/private-lecture", methods=["GET", "POST"])
-def private_lecture() -> str:
-    """Sends out an email including the information about my private lectures."""
-    form = PrivateLectureInfoForm()
-    if request.method == "POST" and form.validate_on_submit():
-        try:
-            send_introduction_email(
-                recipient_email=form.email.data,
-                included_images=["logo.png"],
-                values_to_replace={"NAME": form.name.data, "PRICE": "10000 HUF"},
-            )
-            flash("Az üzenetet sikeresen elküldtük!", "flash-success")
-        except Exception:  # TODO: Specify exception
-            flash("Az üzenetet nem sikerült elküldeni!", "flash-error")
-    return render_template("site/private_lecture.html", title="Különóra", form=form)
+if app.config["PRIVATE_LECTURE_AUTOMATION"]:
+    from private_lecture_automation import send_introduction_email
+
+    @app.route("/private-lecture", methods=["GET", "POST"])
+    def private_lecture() -> str:
+        """Sends out an email including the information about my private lectures."""
+        form = PrivateLectureInfoForm()
+        if request.method == "POST" and form.validate_on_submit():
+            try:
+                send_introduction_email(
+                    recipient_email=form.email.data,
+                    included_images=["logo.png"],
+                    values_to_replace={"NAME": form.name.data, "PRICE": "10000 HUF"},
+                )
+                flash("Az üzenetet sikeresen elküldtük!", "flash-success")
+            except Exception:  # noqa: BLE001
+                # TODO: Specify exception
+                flash("Az üzenetet nem sikerült elküldeni!", "flash-error")
+        return render_template("site/private_lecture.html", title="Különóra", form=form)
 
 
 # Error handler
-# mypy: no-warn-unused-ignores
-# Ignore the type because mypy does not recognize the error handler decorator.
-@app.errorhandler(HTTPException)  # type: ignore
+@app.errorhandler(HTTPException)  # type: ignore[type-var]
 def error_handler(error: HTTPException) -> tuple[str, int | None]:
     """Error handler for the website."""
     return render_template(f"errors/{error.code}.html"), error.code

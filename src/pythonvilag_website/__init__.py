@@ -17,11 +17,12 @@ if not config:
     config = dict(os.environ)
 try:
     SECRET_KEY = str(config["PV_SECRET_KEY"])
-    FLASK_DEBUG = True if str(config["FLASK_DEBUG"]) == "True" else False
+    FLASK_DEBUG = str(config["FLASK_DEBUG"]) == "True"
+    PRIVATE_LECTURE_AUTOMATION = str(config["PRIVATE_LECTURE_AUTOMATION"]) == "True"
+    CHECKMARK = str(config["CHECKMARK"]) == "True"
 except KeyError as e:
-    raise KeyError(
-        "Config variables are missing. Check .env file or add environment variables."
-    ) from e
+    error_message = "Config variables are missing. Check .env file or add environment variables."
+    raise KeyError(error_message) from e
 
 app = Flask(__name__)
 app.config["CACHE_TYPE"] = "simple"
@@ -32,6 +33,9 @@ app.config["SESSION_COOKIE_SAMESITE"] = "Strict"
 app.config["SESSION_COOKIE_SECURE"] = True
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///site.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+app.config["PRIVATE_LECTURE_AUTOMATION"] = PRIVATE_LECTURE_AUTOMATION
+app.config["CHECKMARK"] = CHECKMARK
 
 cache = Cache(app)
 csrf = CSRFProtect(app)

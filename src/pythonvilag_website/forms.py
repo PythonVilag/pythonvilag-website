@@ -9,10 +9,8 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired, Email
 
 
-class PrivateLectureInfoForm(FlaskForm):
-    """
-    Form for information about private lecture request.
-    """
+class PrivateLectureInfoForm(FlaskForm):  # type: ignore [misc]
+    """Form for information about private lecture request."""
 
     name = StringField("Név", validators=[DataRequired()])
     email = StringField("E-mail cím", validators=[DataRequired(), Email()])
