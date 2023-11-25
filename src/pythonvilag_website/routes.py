@@ -9,11 +9,12 @@ from __future__ import annotations
 from pathlib import Path
 from typing import TYPE_CHECKING
 
-from flask import abort, flash, render_template, request, send_file
+from flask import abort, render_template, request, send_file
 from werkzeug.exceptions import HTTPException
 
-from pythonvilag_website import app, cache, csrf
-from pythonvilag_website.forms import PrivateLectureInfoForm
+import pythonvilag_website.modules.checkmark.routes  # noqa: F401, RUF100
+import pythonvilag_website.modules.private_lecture_automation.routes  # noqa: F401
+from pythonvilag_website import app, cache
 from pythonvilag_website.models import Assessment, Category, Lesson, Mentors
 
 if TYPE_CHECKING:
@@ -130,36 +131,6 @@ def open_assessment(category: str, subcategory: str, url: str) -> str:
             secret_word=secret_word,
         )
     return abort(404)
-
-
-# Projects
-# checkmark
-if app.config["CHECKMARK"]:
-    from checkmark.server.routes import checkmark_page
-
-    csrf.exempt(checkmark_page)
-    app.register_blueprint(checkmark_page, url_prefix="/checkmark")
-
-# private-lecture-automation
-if app.config["PRIVATE_LECTURE_AUTOMATION"]:
-    from private_lecture_automation import send_introduction_email
-
-    @app.route("/private-lecture", methods=["GET", "POST"])
-    def private_lecture() -> str:
-        """Sends out an email including the information about my private lectures."""
-        form = PrivateLectureInfoForm()
-        if request.method == "POST" and form.validate_on_submit():
-            try:
-                send_introduction_email(
-                    recipient_email=form.email.data,
-                    included_images=["logo.png"],
-                    values_to_replace={"NAME": form.name.data, "PRICE": "10000 HUF"},
-                )
-                flash("Az üzenetet sikeresen elküldtük!", "flash-success")
-            except Exception:  # noqa: BLE001
-                # TODO: Specify exception
-                flash("Az üzenetet nem sikerült elküldeni!", "flash-error")
-        return render_template("site/private_lecture.html", title="Különóra", form=form)
 
 
 # Error handler

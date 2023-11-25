@@ -4,7 +4,7 @@
   <h1>{{ title }} teszt</h1>
 </div>
 <div class="description">
-  <form action="" method="post">
+  <form method="POST" action="">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
 
     {% set correct_count = namespace(value=0) %}

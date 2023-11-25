@@ -20,14 +20,14 @@ classifiers = [
 ]
 dependencies = [
     "email-validator == 1.3.1",
-    "Flask-Caching==2.0.2",
+    "Flask-Caching==2.1.0",
     "Flask-SQLAlchemy==2.5.1",
-    "Flask-WTF==1.1.1",
-    "Flask==2.3.2",
+    "Flask-WTF==1.2.1",
+    "Flask==2.3.3",
     "itsdangerous==2.1.2",
     "python-dotenv==1.0.0",
-    "SQLAlchemy==1.4",
-    "Werkzeug==2.3.3",
+    "SQLAlchemy==1.4.50",
+    "Werkzeug==2.3.8",
     # Self maintained
     # "private-lecture-automation==0.2.0",
     # "checkmark==0.1.0",
@@ -74,6 +74,9 @@ ignore = [
     "TD003", # missing-todo-link
 ]
 [tool.ruff.per-file-ignores]
+"**/__init__.py" = [
+    "D104", # undocumented-public-package
+]
 "tests/**/*.py" = [
     "ANN001",  # missing-type-function-argument
     "ANN201",  # missing-return-type-undocumented-public-function
