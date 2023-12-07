@@ -1,4 +1,4 @@
-## <div align="center"> ⚪️🔵🔴🟢 Python Világ Weboldal</div>
+## <div align="center"> ⚪️🔵🔴🟢 pythonvilag-website</div>
 
 <div align="center">
 <a href="https://github.com/PythonVilag/pythonvilag-website/actions/workflows/main.yml" target="_blank"><img src="https://github.com/PythonVilag/pythonvilag-website/actions/workflows/main.yml/badge.svg" alt="build status"></a>
