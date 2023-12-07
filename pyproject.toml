@@ -43,7 +43,6 @@ Homepage = "https://pythonvilag.hu/"
 # Tools
 # MyPy
 [tool.mypy]
-python_version = "3.11"
 exclude = ["^tests/"]
 ignore_missing_imports = true
 pretty = true
