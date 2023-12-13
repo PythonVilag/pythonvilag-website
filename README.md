@@ -7,5 +7,5 @@
 </div>
 
 
-## Leírás
-Ez a kód működteti a [Python Világ](https://pythonvilag.hu/) weboldalt.
+## Overview
+Source code that powers the <a href="https://pythonvilag.hu/" target="_blank">Python Világ</a> website.
