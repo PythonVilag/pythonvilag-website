@@ -14,7 +14,7 @@ from pythonvilag_website import db
 class Category(db.Model):  # type: ignore[name-defined, misc]
     """Category properties."""
 
-    id = db.Column(db.Integer, primary_key=True)  # noqa: A003
+    id = db.Column(db.Integer, primary_key=True)
     order = db.Column(db.Integer)
     category = db.Column(db.String(50), nullable=False)
     subcategory = db.Column(db.String(50), nullable=False)
@@ -30,7 +30,7 @@ class Category(db.Model):  # type: ignore[name-defined, misc]
 class Lesson(db.Model):  # type: ignore[name-defined, misc]
     """Lesson properties."""
 
-    id = db.Column(db.Integer, primary_key=True)  # noqa: A003
+    id = db.Column(db.Integer, primary_key=True)
     order = db.Column(db.Integer)
     date_posted = db.Column(db.String(25), nullable=False, default=datetime.now(tz=UTC).strftime("%Y-%m-%d"))
     title = db.Column(db.String(50), unique=True, nullable=False)
@@ -49,7 +49,7 @@ class Lesson(db.Model):  # type: ignore[name-defined, misc]
 class Assessment(db.Model):  # type: ignore[name-defined, misc]
     """Assessment properties."""
 
-    id = db.Column(db.Integer, primary_key=True)  # noqa: A003
+    id = db.Column(db.Integer, primary_key=True)
     order = db.Column(db.Integer)
     question = db.Column(db.String(500), nullable=False)
     options = db.Column(db.String(5000), nullable=False)
@@ -64,7 +64,7 @@ class Assessment(db.Model):  # type: ignore[name-defined, misc]
 class Mentors(db.Model):  # type: ignore[name-defined, misc]
     """Mentor properties."""
 
-    id = db.Column(db.Integer, primary_key=True)  # noqa: A003
+    id = db.Column(db.Integer, primary_key=True)
     order = db.Column(db.Integer)
     channel_name = db.Column(db.String(50), nullable=False)
     description = db.Column(db.String(1000), nullable=False)
