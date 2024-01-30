@@ -24,6 +24,7 @@ dependencies = [
     "Flask-SQLAlchemy==2.5.1",
     "Flask-WTF==1.2.1",
     "Flask==2.3.3",
+    "gunicorn==21.2.0",
     "itsdangerous==2.1.2",
     "python-dotenv==1.0.0",
     "SQLAlchemy==1.4.50",
