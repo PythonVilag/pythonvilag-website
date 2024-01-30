@@ -17,6 +17,10 @@ if not config:
     config = dict(os.environ)
 try:
     SECRET_KEY = str(config["PV_SECRET_KEY"])
+    if not SECRET_KEY:
+        error_message = "PV_SECRET_KEY is empty. Did you update the environment variables?"
+        raise ValueError(error_message)
+
     FLASK_DEBUG = str(config["FLASK_DEBUG"]) == "True"
     PRIVATE_LECTURE_AUTOMATION = str(config["PRIVATE_LECTURE_AUTOMATION"]) == "True"
     CHECKMARK = str(config["CHECKMARK"]) == "True"
