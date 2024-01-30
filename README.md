@@ -9,3 +9,12 @@
 
 ## Overview
 Source code that powers the <a href="https://pythonvilag.hu/" target="_blank">Python Világ</a> website.
+<br><br>
+
+## Deployment
+Currently I am hosting this website on [digitalocean](https://www.digitalocean.com/).
+The following link can be used to deploy the website.
+
+<a href="https://cloud.digitalocean.com/apps/new?repo=https://github.com/PythonVilag/pythonvilag-website/tree/main&refcode=f2cb42a82894" target="_blank">
+ <img src="https://www.deploytodo.com/do-btn-white.svg" alt="deploy">
+</a>

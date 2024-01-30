@@ -1,60 +1,60 @@
-alerts:
-  - rule: DEPLOYMENT_FAILED
-  - rule: DEPLOYMENT_LIVE
-  - rule: DOMAIN_FAILED
-features:
-  - buildpack-stack=ubuntu-22
-ingress:
-  rules:
-    - component:
-        name: pythonvilag-website
-      match:
-        path:
-          prefix: /
-name: pythonvilag-website
-region: fra
-services:
-  - environment_slug: python
-    envs:
-      - key: FLASK_DEBUG
-        scope: RUN_AND_BUILD_TIME
-        type: SECRET
-        value: EV[1:L2Ofv9TnMt28DzaaSQCnvKG61fHo3R8X:AeREbZB3nMF4d1pEaDH37PqS72A=]
-      - key: PV_SECRET_KEY
-        scope: RUN_AND_BUILD_TIME
-        type: SECRET
-        value: EV[1:42aK4UQPSma2vEsgPQpgedwgLnbiv9pz:oK+n/aZZPozootrsXWhnp95xSVdldswCTBkrPKBX9b43YpVn7k+KQt1dw5AiGoHr]
-      - key: PRIVATE_LECTURE_AUTOMATION
-        scope: RUN_AND_BUILD_TIME
-        type: SECRET
-        value: EV[1:MEdI0iet81icWqs+v2E5JC+1O/2yOc9E:KHDZahJWdgmCbU5LK7O0VpomII3F]
-      - key: CHECKMARK
-        scope: RUN_AND_BUILD_TIME
-        type: SECRET
-        value: EV[1:o8oji9pOz9USeFBuL5e6BTf2P/79Bp+8:X0o0F+n2UsLB3M+HgC19VRNRpQca]
-      - key: EMAIL_ADDRESS
-        scope: RUN_AND_BUILD_TIME
-        type: SECRET
-        value: EV[1:kOkNR6F0kc+aKnCYSnI60RD5KkDZXE/s:VBqG0FMPgfxFmTTa/DCxOGX2qsJgZfOO0qNENNm42m2cOfc=]
-      - key: EMAIL_PASSWORD
-        scope: RUN_AND_BUILD_TIME
-        type: SECRET
-        value: EV[1:XvWDsIAVu4u51sUyk3qHWZn0zJTTITkM:vFjKmKw7zLc8YJLFCgjzP7M7URkjx5snjZAJDypkXL5izJs=]
-      - key: HOST
-        scope: RUN_AND_BUILD_TIME
-        type: SECRET
-        value: EV[1:sBFz1yfv7VodrvsjMc8kh/+5obBy+sos:GF6XVE2DGwl9OM2yRjefF6grc4qHdBJTwht/KGPzsZEEjeE=]
-      - key: PORT
-        scope: RUN_AND_BUILD_TIME
-        type: SECRET
-        value: EV[1:P6GjzB498rV90pTpxNVlPUgqNJUMjE1H:qkhnHp0X7OyzZOiqKwte8oU/pw==]
-    github:
-      branch: digitalocean
-      deploy_on_push: true
-      repo: PythonVilag/pythonvilag-website
-    http_port: 5000
-    instance_count: 1
-    instance_size_slug: basic-xxs
-    name: pythonvilag-website
-    run_command: gunicorn --config gunicorn_config.py
-    source_dir: /
+spec:
+  alerts:
+    - rule: DEPLOYMENT_FAILED
+    - rule: DOMAIN_FAILED
+  name: pythonvilag-website
+  region: fra
+  features:
+    - buildpack-stack=ubuntu-22
+  ingress:
+    rules:
+      - component:
+          name: pythonvilag-website
+        match:
+          path:
+            prefix: /
+  services:
+    - name: pythonvilag-website
+      environment_slug: python
+      instance_count: 1
+      instance_size_slug: basic-xxs
+      run_command: gunicorn --config gunicorn_config.py
+      source_dir: /
+      http_port: 5000
+      github:
+        repo: PythonVilag/pythonvilag-website
+        branch: main
+        deploy_on_push: true
+      envs:
+        - key: FLASK_DEBUG
+          scope: RUN_AND_BUILD_TIME
+          type: SECRET
+          value:
+        - key: PV_SECRET_KEY
+          scope: RUN_AND_BUILD_TIME
+          type: SECRET
+          value:
+        - key: PRIVATE_LECTURE_AUTOMATION
+          scope: RUN_AND_BUILD_TIME
+          type: SECRET
+          value:
+        - key: CHECKMARK
+          scope: RUN_AND_BUILD_TIME
+          type: SECRET
+          value:
+        - key: EMAIL_ADDRESS
+          scope: RUN_AND_BUILD_TIME
+          type: SECRET
+          value:
+        - key: EMAIL_PASSWORD
+          scope: RUN_AND_BUILD_TIME
+          type: SECRET
+          value:
+        - key: HOST
+          scope: RUN_AND_BUILD_TIME
+          type: SECRET
+          value:
+        - key: PORT
+          scope: RUN_AND_BUILD_TIME
+          type: SECRET
+          value:
