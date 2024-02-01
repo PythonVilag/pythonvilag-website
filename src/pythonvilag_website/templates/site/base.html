@@ -6,10 +6,10 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/accordion.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/assessment.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/navigation.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/navigation.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/post.css') }}">
-  <link rel="shortcut icon" type="image" href="{{ url_for('static', filename='images/source/favicon.ico') }}" />
+  <link rel="shortcut icon" type="image" href="{{ url_for('static', filename='images/site/favicon.ico') }}" />
 
   <title>{{ title }}</title>
 </head>
@@ -28,13 +28,13 @@
       {% endif %}
       {% endwith %}
 
-      {% include 'source/navigation.html' %}
+      {% include 'site/navigation.html' %}
       <div class="main">
         {% block content %}{% endblock content %}
       </div>
     </div>
   </div>
-  {% include 'source/footer.html' %}
+  {% include 'site/footer.html' %}
 
 
   <script src="{{  url_for('static', filename='scripts/manage_accordion.js')  }}"></script>
