@@ -57,7 +57,7 @@ def open_category(category: str) -> str:
     subcategories = Category.query.order_by(Category.order).filter_by(category=category).all()
     if len(subcategories) != 0:
         return render_template(
-            "source/category.html",
+            "site/category.html",
             category=category,
             subcategories=subcategories,
             title=f"{category.title()} | Python Világ",
@@ -78,7 +78,7 @@ def open_subcategory(category: str, subcategory: str) -> str:
         lessons = Lesson.query.filter_by(category_id=category_id).all()
         title = Category.query.filter_by(id=category_id).first().title
         return render_template(
-            "source/subcategory.html",
+            "site/subcategory.html",
             category=category,
             subcategory=subcategory,
             title=f"{title} | Python Világ",
@@ -124,7 +124,7 @@ def open_assessment(category: str, subcategory: str, url: str) -> str:
                 answers[question.question] = request.form.get(question.question)
 
         return render_template(
-            "source/assessment.html",
+            "site/assessment.html",
             title=title,
             questions=questions,
             answers=answers,

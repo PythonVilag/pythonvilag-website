@@ -29,7 +29,7 @@ if app.config["PRIVATE_LECTURE_AUTOMATION"]:
                 # TODO: Specify exception
                 flash("Az üzenetet nem sikerült elküldeni!", "flash-error")
         return render_template(
-            "post/project/private_lecture_automation/private_lecture.html",
+            "modules/private_lecture_automation/private_lecture.html",
             title="Különóra",
             form=form,
         )
