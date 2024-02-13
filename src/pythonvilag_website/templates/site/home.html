@@ -1,0 +1,25 @@
+{% extends "site/base.html" %}
+{% block content %}
+<div class="title">
+  <h1>Bemutatkozás</h1>
+</div>
+<div class="description">
+  <p>Köszöntelek a weboldalamon! Mizsák Dániel vagyok, a <b>Python Világ</b> elkészítője.</p><br>
+  <p>A célom a weboldallal a Python programozási nyelv és az ehhez kapcsolódó legnépszerűbb
+    könyvtárak ismertetése, illetve ezek összekapcsolása a fizikai világgal, projekt centrikus módon.</p><br>
+  <p>Mindezt <b>magyar nyelven</b> és teljesen <b>ingyenesen</b>! Ha felkeltettem az érdeklődésedet nézd meg a
+    lentebbi bemutatkozó videót vagy leckéim egyikét!</p><br>
+  <sup>Jelenleg jó néhány témakör még fejlesztés alatt van, ezeket (f.a.) kiegészítéssel találod. </sup>
+</div>
+
+<button class="accordion accordion_video">Python Világ bemutatkozó videó</button>
+
+<div class="panel panel_video">
+  <div class="video">
+    <iframe width="1012" height="570" src="https://www.youtube.com/embed/Dd6t3POTyvE" title="YouTube video player"
+      frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+  </div>
+</div>
+
+{% endblock content %}

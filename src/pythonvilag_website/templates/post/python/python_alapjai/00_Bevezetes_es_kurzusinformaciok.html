@@ -1,0 +1,37 @@
+{% extends "site/base.html" %}
+{% block content %}
+<div class="title">
+  <h1><span style="color: #306998; font-weight: bold">0. Bevezetés és kurzus információk</span></h1>
+</div>
+<div class="description">
+  <p>
+    Ebben a leckében ismerjük meg a programozó környezetet,
+    a tananyag felépítését, illetve a leckék során használt jelölésrendszert.<br><br>
+  </p>
+  <p>A videóhoz tartozó tananyag az <a
+      href="https://colab.research.google.com/github/PythonVilag/Python_alapjai/blob/main/00_Bevezetes_es_kurzusinformaciok/00_Bevezetes_es_kurzusinformaciok.ipynb"
+      target="_blank">alábbi linken</a> érhető el.
+  </p>
+
+</div>
+
+<br>
+<button class="accordion accordion_video">Bevezetés és kurzus információk videó</button>
+
+<div class="panel panel_video">
+  <div class="video">
+    <iframe width="1012" height="570" src="https://www.youtube.com/embed/N_wZFvUKVAY" frameborder="0"
+      allowfullscreen></iframe>
+  </div>
+</div>
+
+<div class="description">
+  <div class="dashed"></div>
+  Ha úgy érzed sikerült megérteni a lecke lényegét töltsd ki a tesztet!<br>
+  Az tesznek nincs semmi súlya, csak a Te fejlődésedet segíti.
+  <a class="assessment_button" href="{{ url_for('open_assessment', category=category,
+        subcategory=subcategory, url=lesson.url) }}">Bevezetés és kurzus információk teszt</a>
+</div>
+
+
+{% endblock content %}

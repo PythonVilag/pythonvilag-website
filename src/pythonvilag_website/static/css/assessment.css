@@ -1,0 +1,47 @@
+.assessment_button {
+    font-size: 18px;
+    display: flex;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    justify-content: center;
+    cursor: pointer;
+    white-space: nowrap;
+    padding: 12px 24px !important;
+    color: #000 !important;
+    background-color: #fff;
+    border: 1px solid #000 !important;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.assessment_button:hover {
+    background-color: #6CC04A;
+}
+
+input[type=radio] {
+    transform: scale(1.75);
+    margin-right: 10px;
+}
+
+.secret_word {
+    font-size: 24px;
+    padding: 12px 24px !important;
+    color: #000 !important;
+    background-color: #fff;
+    border: 1px solid #000 !important;
+    width: 100%;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.secret_word_solution {
+    color: red;
+    font-size: 30px;
+    text-align: center;
+}
+
+.dashed {
+    margin: 30px 0 30px 0;
+    border-top: 4px dashed #bbb;
+}

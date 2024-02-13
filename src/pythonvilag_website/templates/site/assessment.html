@@ -1,0 +1,50 @@
+{% extends "site/base.html" %}
+{% block content %}
+<div class="title">
+  <h1>{{ title }} teszt</h1>
+</div>
+<div class="description">
+  <form method="POST" action="">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+
+    {% set correct_count = namespace(value=0) %}
+    {% for question in questions %}
+    <h3>{{ question.order }}. {{ question.question }}</h3>
+
+    {% for option in question.options %}
+    {% if option == answers[question.question] %}
+    <input type="radio" id="{{ option }}" name="{{ question.question }}" value="{{ option }}" checked="checked">
+    {% if question.answer == answers[question.question] %}
+    {% set correct_count.value = correct_count.value + 1 %}
+
+    <span style="color:green"><label for="{{ option }}">{{ option }}</label></span>
+    ✅
+    {% else %}
+    <span style="color:red"><label for="{{ option }}">{{ option }}</label></span>
+    ❌
+    {% endif %}
+    {% else %}
+    <input type="radio" id="{{ option }}" name="{{ question.question }}" value="{{ option }}">
+    <label for="{{ option }}">{{ option }}</label>
+    {% endif %}<br>
+    {% endfor %}
+    {% if not loop.last %}
+    <div class="dashed"></div>
+    {% endif %}
+    {% endfor %}
+    <br>
+    {% if correct_count.value == questions|length %}
+    <div class="secret_word">
+      Gratulálok az összes megoldásod helyes! A leckéhez tartozó titkos szó:
+      <div class="secret_word_solution">
+        {{ secret_word }}
+      </div>
+    </div>
+    {% else %}
+    <button type="submit" class="assessment_button">Ellenőriz</button>
+    {% endif %}
+  </form>
+</div>
+
+
+{% endblock content %}

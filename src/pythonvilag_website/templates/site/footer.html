@@ -1,0 +1,36 @@
+<div class="footer">
+        <div class="footer-socials">
+                <p>Nézz<br>Youtube-on</p>
+                <a href="https://www.youtube.com/@pythonvilag/" target="_blank"><img
+                                src="{{ url_for('static', filename='images/site/youtube.png') }}"
+                                alt="Youtube Logo"></a>
+                <p>Keress<br>LinkedIn-en</p>
+                <a href="https://www.linkedin.com/in/daniel-mizsak" target="_blank"><img
+                                src="{{ url_for('static', filename='images/site/linkedin.png') }}"
+                                alt="LinkedIn Logo"></a>
+                <p>Olvasd el az<br>önéletrajzomat</p>
+                <a href="{{ url_for('open_cv') }}" target="_blank"><img
+                                src="{{ url_for('static', filename='images/site/cv.png') }}" alt="CV Logo"></a>
+                <p>Fürkészd a<br>a GitHub-om</p>
+                <a href="https://github.com/PythonVilag" target="_blank"><img
+                                src="{{ url_for('static', filename='images/site/github.png') }}" alt="GitHub Logo"></a>
+                <p>Tanulj<br>akiktől én</p>
+                <a href="{{ url_for('open_mentors') }}"><img
+                                src="{{ url_for('static', filename='images/site/study.png') }}" alt="Mentors Logo"></a>
+        </div>
+
+
+        <div class="footer-bottom">
+                <a href="https://github.com/PythonVilag/pythonvilag-website" target="_blank">copyleft <span
+                                class="copyleft">&copy;</span>
+                        <script>document.write(new Date().getFullYear());</script>
+                </a>
+                &emsp;&emsp;|&emsp;&emsp;
+                <a href="{{ url_for('open_home') }}">pythonvilag.hu</a>
+                &emsp;&emsp;|&emsp;&emsp;
+                <a href="https://github.com/daniel-mizsak" target="_blank">készítette mizsák
+                        dániel</a>
+                &emsp;&emsp;|&emsp;&emsp;
+                <a href="{{ url_for('open_faq') }}">gy.i.k.</a>
+        </div>
+</div>

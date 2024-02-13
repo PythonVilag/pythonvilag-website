@@ -1,0 +1,37 @@
+{% extends "site/base.html" %}
+{% block content %}
+<div class="title">
+  <h1>Mentoraim</h1>
+</div>
+
+<div class="description">
+  <p>Az lentebb ismertetett források sokat segítettek nekem az alapok tekintetében.</p>
+</div>
+
+{% for mentor in mentors %}
+<div class="post_container">
+  <a target="_blank" rel="noopener noreferrer" href="{{ mentor.youtube_link }}">
+    <img class="post_image" src="{{ url_for('static', filename= 'images/post/mentors/' + mentor.image) }}">
+  </a>
+
+  <div class="post_text_container">
+    <div class="post_col_left">
+      <h3><b>{{ mentor.channel_name }}</b></h3>
+    </div>
+  </div>
+
+  <div class="post_text_container">
+    <p>
+      {{ mentor.description }}
+    </p>
+    <div class="post_row">
+      <div class="post_col_left">
+        <p><a class="read_more_button" target="_blank" rel="noopener noreferrer" href="{{ mentor.youtube_link }}"
+            target="_blank">YouTube »</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endfor %}
+{% endblock content %}

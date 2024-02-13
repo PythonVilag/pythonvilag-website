@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/accordion.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/assessment.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/navigation.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/post.css') }}">
+  <link rel="shortcut icon" type="image" href="{{ url_for('static', filename='images/site/favicon.ico') }}" />
+
+  <title>{{ title }}</title>
+</head>
+
+<body>
+  <div class="body_div">
+    <div class="container">
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      <ul class=flash-container>
+        {% for category, message in messages %}
+        <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% endwith %}
+
+      {% include 'site/navigation.html' %}
+      <div class="main">
+        {% block content %}{% endblock content %}
+      </div>
+    </div>
+  </div>
+  {% include 'site/footer.html' %}
+
+
+  <script src="{{  url_for('static', filename='scripts/manage_accordion.js')  }}"></script>
+</body>
+
+</html>
