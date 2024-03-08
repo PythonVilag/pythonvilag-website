@@ -4,7 +4,7 @@ Import and add the private lecture automation module to the app.
 @author "Daniel Mizsak" <info@pythonvilag.hu>
 """
 
-from flask import flash, render_template, request
+from flask import flash, render_template, request  # noqa: I001
 
 from pythonvilag_website import app, csrf
 from pythonvilag_website.modules.private_lecture_automation.forms import PrivateLectureInfoForm
