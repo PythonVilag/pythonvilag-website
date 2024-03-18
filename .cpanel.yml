@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/tgoxwjmv/test/
-    - /bin/cp * $DEPLOYPATH
+    - export DEPLOYPATH=/home/tgoxwjmv/pythonvilag-website/
+    - /bin/cp -R * $DEPLOYPATH
