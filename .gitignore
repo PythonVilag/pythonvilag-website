@@ -3,34 +3,36 @@ src/pythonvilag_website/static/uploads/*
 
 # System
 .DS_Store
+*.log
+
+# Byte-compiled
+__pycache__/
+*.py[cod]
+*$py.class
 
 # Distribution / Packaging
+.eggs/
+*.egg
+*.egg-info/
 build/
 dist/
 eggs/
-.eggs/
 sdist/
 wheels/
-*.egg-info/
-*.egg
 
 # Unit test / Coverage reports
-.tox/
 .coverage
+.tox
+htmlcov/
+
+# Jupyter Notebook
+.ipynb_checkpoints
 
 # Environments
 .env
 .venv
 env/
 venv/
-
-# Python
-__pycache__/
-.ipynb_checkpoints
-*.egg-info/
-*.log
-*.py[cod]
-*$py.class
 
 # IDE
 .idea/

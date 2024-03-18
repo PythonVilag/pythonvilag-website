@@ -7,7 +7,7 @@ build-backend = "hatchling.build"
 [project]
 name = "pythonvilag-website"
 version = "1.0.1"
-description = "Pythonvilag website."
+description = "Source code that powers the Python Világ website."
 readme = "README.md"
 requires-python = ">=3.11"
 license = { file = "LICENSE" }
@@ -50,7 +50,7 @@ warn_unused_ignores = true
 
 # Pytest
 [tool.pytest.ini_options]
-addopts = "--cov=src"
+addopts = "--cov=pythonvilag_website"
 testpaths = ["tests"]
 
 # Ruff

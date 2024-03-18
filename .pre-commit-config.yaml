@@ -23,6 +23,8 @@ repos:
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.3.2
     hooks:
+      # Ruff linting
       - id: ruff
         args: [--line-length=120]
+      # Ruff formatting
       - id: ruff-format
