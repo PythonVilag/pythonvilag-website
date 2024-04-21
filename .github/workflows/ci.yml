@@ -11,4 +11,4 @@ jobs:
   tox:
     uses: daniel-mizsak/workflows/.github/workflows/tox.yml@main
     with:
-      python-version: "3.11"
+      python-version: "['3.11']"
