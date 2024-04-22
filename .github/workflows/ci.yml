@@ -12,4 +12,5 @@ jobs:
     with:
       python-version: "['3.11', '3.12']"
       codecov: true
-    secrets: inherit
+    secrets:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
