@@ -12,3 +12,5 @@ jobs:
     uses: daniel-mizsak/workflows/.github/workflows/tox.yml@main
     with:
       python-version: "['3.11']"
+      codecov: true
+    secrets: inherit
