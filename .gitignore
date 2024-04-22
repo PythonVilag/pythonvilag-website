@@ -23,6 +23,7 @@ wheels/
 # Unit test / Coverage reports
 .coverage
 .tox
+coverage.xml
 htmlcov/
 
 # Jupyter Notebook
