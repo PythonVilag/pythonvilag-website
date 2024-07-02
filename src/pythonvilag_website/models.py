@@ -23,7 +23,7 @@ class Category(db.Model):  # type: ignore[name-defined, misc]
     image = db.Column(db.String(50), nullable=False, default="default.png")
     lessons = db.relationship("Lesson", backref="Category", lazy=True)
 
-    def __repr__(self) -> str:  # noqa: ANN101, D105
+    def __repr__(self) -> str:  # noqa: D105
         return f'Category("{self.category}", "{self.title}")'
 
 
@@ -42,7 +42,7 @@ class Lesson(db.Model):  # type: ignore[name-defined, misc]
     category_id = db.Column(db.Integer, db.ForeignKey("category.id"), nullable=False)
     assessments = db.relationship("Assessment", backref="Lesson", lazy=True)
 
-    def __repr__(self) -> str:  # noqa: ANN101, D105
+    def __repr__(self) -> str:  # noqa: D105
         return f'Lesson("{self.title}", "{self.date_posted}")'
 
 
@@ -57,7 +57,7 @@ class Assessment(db.Model):  # type: ignore[name-defined, misc]
 
     lesson_id = db.Column(db.Integer, db.ForeignKey("lesson.id"), nullable=False)
 
-    def __repr__(self) -> str:  # noqa: ANN101, D105
+    def __repr__(self) -> str:  # noqa: D105
         return f'Assessment("{self.question}", "{self.answer}")'
 
 
@@ -71,5 +71,5 @@ class Mentors(db.Model):  # type: ignore[name-defined, misc]
     image = db.Column(db.String(50), nullable=False, default="default.png")
     youtube_link = db.Column(db.String(1000))
 
-    def __repr__(self) -> str:  # noqa: ANN101, D105
+    def __repr__(self) -> str:  # noqa: D105
         return f'Mentor("{self.channel_name}")'
