@@ -67,8 +67,6 @@ h6 {
     margin: auto;
 }
 
-
-
 /* Style for the flash message container */
 .flash-container {
     position: fixed;
@@ -94,7 +92,6 @@ h6 {
     background-color: #dc3545;
     color: #fff;
 }
-
 
 /* Form */
 .input_field {

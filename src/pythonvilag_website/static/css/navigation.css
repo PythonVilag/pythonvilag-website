@@ -84,7 +84,6 @@ nav>ul>li>ul.dropdown li {
     height: 50px;
 }
 
-
 nav>ul>li>ul.dropdown li>a {
     text-decoration: none;
     color: black;
@@ -103,7 +102,6 @@ nav>ul>.extra_nav>ul.dropdown li>a:hover {
 nav>ul>.project_nav>ul.dropdown li>a:hover {
     color: #00878F;
 }
-
 
 nav>ul>li:hover>ul.dropdown {
     visibility: visible;
