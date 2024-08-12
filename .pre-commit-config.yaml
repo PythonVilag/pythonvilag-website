@@ -3,6 +3,10 @@
 
 exclude: "test/db_setup.py|"
 
+# pre-commit ci
+ci:
+  autoupdate_schedule: monthly
+
 # pre-commit
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -18,6 +22,12 @@ repos:
       - id: end-of-file-fixer
       - id: name-tests-test
       - id: trailing-whitespace
+
+  # gitleaks
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.18.4
+    hooks:
+      - id: gitleaks
 
   # ruff
   - repo: https://github.com/astral-sh/ruff-pre-commit
