@@ -37,7 +37,7 @@ app.config["SESSION_HTTPONLY"] = True
 app.config["SESSION_COOKIE_SAMESITE"] = "None"
 app.config["SESSION_COOKIE_SECURE"] = True
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///site.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{app.root_path}/site.db"
 
 app.config["PRIVATE_LECTURE_AUTOMATION"] = PRIVATE_LECTURE_AUTOMATION
 app.config["CHECKMARK"] = CHECKMARK

@@ -39,7 +39,3 @@ def test_posts(client, route):
 def test_error_handler(client, route, error):
     respond = client.get(route)
     assert respond.status_code == error
-
-
-# Database
-# TODO: Test other properties like projects, database and forms
