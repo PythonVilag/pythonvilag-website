@@ -1,13 +1,13 @@
 {% extends "site/base.html" %}
 {% block content %}
 <div class="title">
-  <h1><span style="color: #306998; font-weight: bold">2. Változók, típusok és műveleteik</span></h1>
+    <h1><span style="color: #306998; font-weight: bold">2. Változók, típusok és műveleteik</span></h1>
 </div>
 <div class="description">
-  <p>
-    Bemutatásra kerülnek a változók, melyek az alapját képzik bármely programozásos feladatnak.
-    Megtanulunk számokat/szöveget elmenteni a memóriába és különböző műveleteket végrehajtani rajtuk.
-  </p>
+    <p>
+        Bemutatásra kerülnek a változók, melyek az alapját képzik bármely programozásos feladatnak.
+        Megtanulunk számokat/szöveget elmenteni a memóriába és különböző műveleteket végrehajtani rajtuk.
+    </p>
 
 </div>
 
@@ -15,18 +15,21 @@
 <button class="accordion accordion_video">Változók, típusok és műveleteik videó</button>
 
 <div class="panel panel_video">
-  <div class="video">
-    <iframe width="1012" height="570" src="https://www.youtube.com/embed/sEoBMHDFyRQ" frameborder="0"
-      allowfullscreen></iframe>
-  </div>
+    <div class="video">
+        <iframe width="1012" height="570" src="https://www.youtube.com/embed/sEoBMHDFyRQ" frameborder="0"
+            allowfullscreen></iframe>
+    </div>
 </div>
 
 <div class="description">
-  <div class="dashed"></div>
-  Ha úgy érzed sikerült megérteni a lecke lényegét töltsd ki a tesztet!<br>
-  Az tesznek nincs semmi súlya, csak a Te fejlődésedet segíti.
-  <a class="assessment_button" href="{{ url_for('open_assessment', category=category,
+    <div class="dashed"></div>
+    Ha úgy érzed sikerült megérteni a lecke lényegét töltsd ki a tesztet!<br>
+    Az tesznek nincs semmi súlya, csak a Te fejlődésedet segíti.
+    <a class="assessment_button" href="{{ url_for('open_assessment', category=category,
         subcategory=subcategory, url=lesson.url) }}">Változók, típusok és műveleteik teszt</a>
+
+    <div class="dashed"></div>
+    {% include 'site/giscus.html' %}
 </div>
 
 
