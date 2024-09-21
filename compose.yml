@@ -1,7 +1,7 @@
 ---
 services:
   pythonvilag-website:
-    image: ghcr.io/PythonVilag/pythonvilag-website:latest
+    image: ghcr.io/pythonvilag/pythonvilag-website:latest
     container_name: pythonvilag-website
     hostname: pythonvilag-website
     ports:

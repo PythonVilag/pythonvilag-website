@@ -28,4 +28,4 @@
           with:
             context: docker/
             push: true
-            tags: ghcr.io/PythonVilag/pythonvilag-website:latest
+            tags: ghcr.io/pythonvilag/pythonvilag-website:latest
