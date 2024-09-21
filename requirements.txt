@@ -1,1 +1,11 @@
-.
+Flask-SQLAlchemy==3.1.1
+Flask-WTF==1.2.1
+Flask==3.0.3
+gunicorn==23.0.0
+itsdangerous==2.2.0
+python-dotenv==1.0.1
+SQLAlchemy==2.0.32
+Werkzeug==3.0.3
+# Self maintained
+# private-lecture-automation==0.2.0
+# checkmark==0.1.0

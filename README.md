@@ -14,10 +14,3 @@ Source code that powers the <a href="https://pythonvilag.hu/" target="_blank">Py
 
 ## Deployment
 Currently I am hosting this website on [mikrovps](https://www.mikrovps.net/hu).
-
-Previously I was experimenting with hosting on [digitalocean](https://www.digitalocean.com/).\
-The following link can be used to deploy the website and to use my referral code. (Keep in mind that during the deployment some environment variables need to be set.)
-
-<a href="https://cloud.digitalocean.com/apps/new?repo=https://github.com/PythonVilag/pythonvilag-website/tree/main&refcode=f2cb42a82894" target="_blank">
- <img src="https://www.deploytodo.com/do-btn-white.svg" alt="deploy">
-</a>

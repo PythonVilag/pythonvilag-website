@@ -1,4 +1,5 @@
 # Project
+secret_key.txt
 src/pythonvilag_website/static/uploads/*
 
 # System

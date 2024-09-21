@@ -1,0 +1,16 @@
+---
+services:
+  pythonvilag-website:
+    image: ghcr.io/PythonVilag/pythonvilag-website:latest
+    container_name: pythonvilag-website
+    hostname: pythonvilag-website
+    ports:
+      - "5000:5000"
+    environment:
+      - SECRET_KEY=/run/secrets/secret_key
+    secrets:
+      - secret_key
+
+secrets:
+  secret_key:
+    file: secret_key.txt
