@@ -1,4 +1,5 @@
 import pytest
+
 from pythonvilag_website import app
 
 

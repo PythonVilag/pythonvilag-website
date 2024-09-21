@@ -15,18 +15,17 @@ from flask_wtf.csrf import CSRFProtect
 config = dotenv_values(".env")
 if not config:
     config = dict(os.environ)
-try:
-    FLASK_DEBUG = str(config["FLASK_DEBUG"]) == "True"
-    SECRET_KEY = str(config["PV_SECRET_KEY"])
-    if not SECRET_KEY:
-        error_message = "PV_SECRET_KEY is empty. Did you update the environment variables?"
-        raise ValueError(error_message)
 
-    PRIVATE_LECTURE_AUTOMATION = str(config["PRIVATE_LECTURE_AUTOMATION"]) == "True"
-    CHECKMARK = str(config["CHECKMARK"]) == "True"
-except KeyError as e:
-    error_message = "Config variables are missing. Check .env file or add environment variables."
-    raise KeyError(error_message) from e
+SECRET_KEY = config.get("SECRET_KEY")
+if not SECRET_KEY:
+    error_message = "SECRET_KEY config variable is missing. Check .env file or add environment variables."
+    raise ValueError(error_message)
+else:
+    SECRET_KEY = str(SECRET_KEY)
+
+FLASK_DEBUG = str(config.get("FLASK_DEBUG")) == "True"
+PRIVATE_LECTURE_AUTOMATION = str(config.get("PRIVATE_LECTURE_AUTOMATION")) == "True"
+CHECKMARK = str(config.get("CHECKMARK")) == "True"
 
 # Create the app
 app = Flask(__name__)
