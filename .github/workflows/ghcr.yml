@@ -26,6 +26,5 @@
         - name: Build and push image.
           uses: docker/build-push-action@v6
           with:
-            context: docker/
             push: true
             tags: ghcr.io/pythonvilag/pythonvilag-website:latest
