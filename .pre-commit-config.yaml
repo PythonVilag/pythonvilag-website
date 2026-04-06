@@ -10,7 +10,7 @@ ci:
 # pre-commit
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: v6.0.0
     hooks:
       - id: check-added-large-files
         args: [--maxkb=2000]
@@ -25,13 +25,13 @@ repos:
 
   # gitleaks
   - repo: https://github.com/gitleaks/gitleaks
-    rev: v8.23.3
+    rev: v8.30.0
     hooks:
       - id: gitleaks
 
   # ruff
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.9.4
+    rev: v0.15.9
     hooks:
       # Ruff linting
       - id: ruff
